@@ -1,0 +1,25 @@
+{% extends 'shop/base.html' %}
+
+{% block title %}Каталог{% endblock %}
+
+{% block content %}
+<div class="row">
+    {% for flower in flowers %}
+    <div class="col-md-4">
+        <div class="card mb-4 shadow-sm">
+            <img src="{{ flower.image.url }}" class="card-img-top" alt="{{ flower.name }}">
+            <div class="card-body">
+                <h5 class="card-title">{{ flower.name }}</h5>
+                <p class="card-text">{{ flower.description }}</p>
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                        <a href="{% url 'create_order' %}" class="btn btn-sm btn-outline-success">Заказать</a>
+                    </div>
+                    <small class="text-muted">{{ flower.price }} руб.</small>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'shop/base.html' %}
+
+{% block title %}Оформление заказа{% endblock %}
+
+{% block content %}
+    <h1>Оформление заказа</h1>
+
+    {% if form.errors %}
+        <div class="error">
+            Ошибка! Пожалуйста, исправьте следующие ошибки:
+            <ul>
+                {% for field, errors in form.errors.items %}
+                    <li>{{ field.label }}: {{ errors|join:", " }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.hidden_fields|join:"" }}
+
+        <div>
+            <label>{{ form.delivery_address.label }}</label>
+            {{ form.delivery_address }}
+        </div>
+
+        <div>
+            <label>{{ form.delivery_datetime.label }}</label>
+            {{ form.delivery_datetime }}
+        </div>
+
+        <h2>Выберите цветы и укажите количество:</h2>
+        {% for flower in flowers %}
+            <div>
+                <span>{{ flower.name }} - {{ flower.price }} руб.</span>
+                <input type="number" name="quantity_{{ flower.id }}" min="0" value="0" />
+            </div>
+        {% endfor %}
+
+        <button type="submit">Оформить заказ</button>
+    </form>
+{% endblock %}

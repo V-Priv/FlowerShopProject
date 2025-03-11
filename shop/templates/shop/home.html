@@ -1,0 +1,21 @@
+{% extends 'shop/base.html' %}
+
+{% block title %}
+    Доставка Цветов - Главная
+{% endblock %}
+
+{% block content %}
+<div class="hero-section" style="background-image: url('/static/shop/image/Коллаж.jpg'); background-size: cover; background-position: center; padding: 100px 0; text-align: center; color: white;">
+    <h1 style="font-size: 3em; font-weight: bold;">Добро пожаловать в наш магазин цветов!</h1>
+    <p style="font-size: 1.5em; margin: 20px 0;">Доставляем свежие цветы прямо к вашей двери</p>
+    <a href="{% url 'catalog' %}" class="btn btn-primary" style="padding: 10px 20px; font-size: 1.2em;">Посмотреть Каталог</a>
+</div>
+<div class="content-section" style="padding: 40px 20px; text-align: center;">
+    <h2 style="margin-bottom: 20px;">Почему выбирают нас?</h2>
+    <ul style="list-style-type: none; padding: 0;">
+        <li style="margin-bottom: 10px;">Большой выбор свежих цветов</li>
+        <li style="margin-bottom: 10px;">Быстрая и надежная доставка</li>
+        <li style="margin-bottom: 10px;">Лучшие цены и отличное обслуживание</li>
+    </ul>
+</div>
+{% endblock %}

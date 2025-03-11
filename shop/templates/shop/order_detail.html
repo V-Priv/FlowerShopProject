@@ -1,0 +1,30 @@
+{% extends 'shop/base.html' %}
+
+{% block title %}Детали заказа{% endblock %}
+
+{% block content %}
+
+    <h2>Детали заказа №{{ order.id }}</h2>
+    <p>Статус: {{ order.status }}</p>
+    <p>Общая стоимость: {{ order.total_price }} руб.</p>
+    <p>Дата создания: {{ order.created_at }}</p>
+    <p>Дата и время доставки: {{ order.delivery_datetime|date:"d.m.Y H:i" }}</p>
+
+    <h3>Цветы в заказе:</h3>
+    <ul>
+        {% for item in order.orderitem_set.all %}
+            <li>
+                {{ item.flower.name }} - {{ item.quantity }} шт.
+                <img src="{{ item.flower.image.url }}" alt="{{ item.flower.name }}" style="width:100px; height:auto;" /> <!-- Добавляем изображение -->
+            </li>
+        {% endfor %}
+    </ul>
+
+    <p>Адрес доставки: {{ order.delivery_address }}</p>
+
+    <form method="post" action="{% url 'confirm_order' order.id %}">
+        {% csrf_token %}
+        <input type="submit" value="Подтвердить заказ">
+    </form>
+
+{% endblock %}
