@@ -29,16 +29,17 @@
 git clone https://github.com/ваш-username/FlowerShop.git
 cd FlowerShop
 
-Установите зависимости:
+2.Установите зависимости:
 python -m venv venv
 source venv/bin/activate  # Для Linux/Mac
 venv\Scripts\activate    # Для Windows
 pip install -r requirements.txt
-Настройте базу данных:
+
+3.Настройте базу данных:
 python manage.py migrate
 python manage.py createsuperuser
 
-Запустите сервер:
+4.Запустите сервер:
 python manage.py runserver
 
 🔧 Настройка Telegram-бота
